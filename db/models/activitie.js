@@ -5,6 +5,7 @@ exports.create=function(data,callback){
     var activitie=new Activitie({
         bus_id:data.bus_id,
         bus_avatar:data.bus_avatar,
+        bus_number:data.bus_number,
         bus_introduce:{
             bus_name:data.bus_introduce.bus_name,
             bus_location:data.bus_introduce.bus_location,
@@ -19,5 +20,11 @@ exports.create=function(data,callback){
         else{
 　　　　　　　callback(err,null);
         }
+    });
+};
+
+exports.find=function(callback){
+    Activitie.find(function(err,activitie){
+        callback(err,activitie);
     });
 };

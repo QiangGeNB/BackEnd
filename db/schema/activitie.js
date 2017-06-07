@@ -1,8 +1,9 @@
 var mongoose = require('../db.js')
 
-var ShopSchema = new mongoose.Schema({
+var ActivitieSchema = new mongoose.Schema({
 	bus_id:Number,
 	bus_avatar:String,
+	bus_number:Number,
 	bus_introduce:{
 	    bus_name:String,
 	    bus_location:String,
@@ -11,4 +12,4 @@ var ShopSchema = new mongoose.Schema({
 	}
 })
 
-module.exports = mongoose.model('activitie',ShopSchema);
+module.exports = mongoose.model('activitie',ActivitieSchema);
