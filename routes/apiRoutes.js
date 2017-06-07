@@ -32,7 +32,26 @@ apiRoutes.get('/find_activitie',function(req,res){
       }
   });
 });
-
+apiRoutes.get('/remove_by_id_activitie',function(req,res){
+  Activitie.RemoveById({bus_id:1},function(err,result){
+      if(!err){
+          res.send(JSON.stringify(result));
+      }
+      else{
+          res.send(err);
+      }
+  });
+});
+apiRoutes.get('/add_one_activitie',function(req,res){
+  Activitie.AddOne({bus_id:1},function(err,result){
+      if(!err){
+          res.send(JSON.stringify(result));
+      }
+      else{
+          res.send(err);
+      }
+  });
+});
 
 
 
