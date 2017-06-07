@@ -4,14 +4,20 @@ var mongoose=require('mongoose');
 exports.create=function(data,callback){
     var activitie=new Activitie({
         bus_id:data.bus_id,
-        bus_avatar:data.bus_avatar,
-        bus_number:data.bus_number,
-        bus_introduce:{
-            bus_name:data.bus_introduce.bus_name,
-            bus_location:data.bus_introduce.bus_location,
-            bus_info:data.bus_introduce.bus_info,
-            bus_phone:data.bus_introduce.bus_phone
-        }
+        act_id:data.act_id,
+        act_name:data.act_name, //用户自己设置，有默认值
+        act_avatar:data.act_avatar,
+        act_date:data.act_date, //活动时间
+        member:{
+            max:data.member.max,
+            min:data.member.min,
+            now:data.member.now
+        },
+        act_originator:{ //活动发起人信息
+            ori_id:data.act_originator.ori_id,
+            ori_phone:data.act_originator.ori_phone
+        },
+        act_member:data.act_member //用户的openid    存用户?用户id
     });
     activitie.save(function(err,activitie){
         if(!err){
@@ -30,20 +36,20 @@ exports.find=function(callback){
 };
 
 //返回值为[n:x,ok:y] x代表删除的数量 ok代表。。。还不清楚
-exports.RemoveById=function(bus_id,callback){
-    Activitie.remove(bus_id,function(err,activitie){
+exports.RemoveById=function(act_id,callback){
+    Activitie.remove(act_id,function(err,activitie){
         callback(err,activitie);
     });
 };
 
-exports.AddOne=function(bus_id,callback){
-    Activitie.update(bus_id,{'$inc':{'bus_number':1}},function(err,activitie){
+exports.AddOne=function(act_id,callback){
+    Activitie.update(act_id,{'$inc':{'member.now':1}},function(err,activitie){
         callback(err,activitie);
     });
 };
 
-exports.SubOne=function(bus_id,callback){
-    Activitie.update(bus_id,{'$inc':{'bus_number':-1}},function(err,activitie){
+exports.SubOne=function(act_id,callback){
+    Activitie.update(act_id,{'$inc':{'member.now':-1}},function(err,activitie){
         callback(err,activitie);
     });
 };

@@ -5,15 +5,22 @@ var Activitie = require('../db/models/activitie.js');
 
 apiRoutes.get('/add_activitie',function(req,res){
   Activitie.create({
-        "bus_id": 1,
-        "bus_avatar": "活动头像url",
-        "bus_number": 10,
-        "bus_introduce": { //活动的介绍
-        "bus_name": "鼎福射箭馆",
-        "bus_location": "平乐园十字路口",
-        "bus_info":"介绍",
-        "bus_phone": "13263135237"
-        }},function(err,result){
+      "bus_id": 1,
+      "act_id": 100,
+      "act_name": "我们一起射箭", //用户自己设置，有默认值
+      "act_avatar": "活动头像",
+      "act_date": "2017/6/19", //活动时间
+      "member": {
+        "max": 10,
+        "min": 5,
+        "now": 3
+      },
+      "act_originator": { //活动发起人信息
+        "ori_id": 1,
+        "ori_phone": "13263135237"
+      },
+      "act_member": [1,2,3] //用户的openid    存用户?用户id
+      },function(err,result){
       if(!err){
           res.send(JSON.stringify(result));
       }
@@ -33,7 +40,7 @@ apiRoutes.get('/find_activitie',function(req,res){
   });
 });
 apiRoutes.get('/remove_by_id_activitie',function(req,res){
-  Activitie.RemoveById({bus_id:1},function(err,result){
+  Activitie.RemoveById({act_id:100},function(err,result){
       if(!err){
           res.send(JSON.stringify(result));
       }
@@ -43,7 +50,7 @@ apiRoutes.get('/remove_by_id_activitie',function(req,res){
   });
 });
 apiRoutes.get('/add_one_activitie',function(req,res){
-  Activitie.AddOne({bus_id:1},function(err,result){
+  Activitie.AddOne({act_id:100},function(err,result){
       if(!err){
           res.send(JSON.stringify(result));
       }
@@ -53,7 +60,7 @@ apiRoutes.get('/add_one_activitie',function(req,res){
   });
 });
 apiRoutes.get('/sub_one_activitie',function(req,res){
-  Activitie.SubOne({bus_id:1},function(err,result){
+  Activitie.SubOne({act_id:100},function(err,result){
       if(!err){
           res.send(JSON.stringify(result));
       }
