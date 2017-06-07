@@ -41,3 +41,9 @@ exports.AddOne=function(bus_id,callback){
         callback(err,activitie);
     });
 };
+
+exports.SubOne=function(bus_id,callback){
+    Activitie.update(bus_id,{'$inc':{'bus_number':-1}},function(err,activitie){
+        callback(err,activitie);
+    });
+};
