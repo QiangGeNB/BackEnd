@@ -3,6 +3,7 @@ var mongoose=require('mongoose');
 console.log('Creating global mongoose connection...');
 
 // Build the connection string
+mongoose.Promise = global.Promise; 
 var dbURI = 'mongodb://127.0.0.1:27017/eg_test';
 
 // Create the database connection

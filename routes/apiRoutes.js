@@ -1,9 +1,18 @@
 var express = require('express');
 var apiRoutes = express.Router();
 var Shop = require('../db/models/shop.js');
+var Activitie = require('../db/models/activitie.js');
 
-apiRoutes.get('/add',function(req,res){
-  Shop.create({"name":"shop1"},function(err,result){
+apiRoutes.get('/add_activitie',function(req,res){
+  Activitie.create({
+        "bus_id": 1,
+        "bus_avatar": "活动头像url",
+        "bus_introduce": { //活动的介绍
+        "bus_name": "鼎福射箭馆",
+        "bus_location": "平乐园十字路口",
+        "bus_info":"介绍",
+        "bus_phone": "13263135237"
+        }},function(err,result){
       if(!err){
           res.send(JSON.stringify(result));
       }

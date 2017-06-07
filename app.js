@@ -21,7 +21,7 @@ app.use(expressSession({
     resave: false,
     secret: 'SECRET',
     saveUninitialized: true,
-    cookie: { maxAge: 60*1000 },
+    cookie: { maxAge: 60*10000 },
     store: new mongoStore({
         mongooseConnection: mongoose.connection
     })
@@ -39,7 +39,8 @@ next();
 
 
 
-//session 拦截器
+//session 拦截器 因为调试暂时禁用
+/*
 app.use(function (req, res, next) {
     var url = req.originalUrl;//获取url
     console.log(req.session.user);
@@ -62,6 +63,7 @@ app.use(function (req, res, next) {
     	next();
     }
 });
+*/
 
 
 app.use('/api',apiRoutes);//使用apiroutes
