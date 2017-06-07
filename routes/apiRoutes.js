@@ -32,7 +32,16 @@ apiRoutes.get('/find_activitie',function(req,res){
       }
   });
 });
-
+apiRoutes.get('/remove_activitie',function(req,res){
+  Activitie.remove({bus_id:1},function(err,result){
+      if(!err){
+          res.send(JSON.stringify(result));
+      }
+      else{
+          res.send(err);
+      }
+  });
+});
 
 
 

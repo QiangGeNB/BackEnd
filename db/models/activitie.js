@@ -28,3 +28,10 @@ exports.find=function(callback){
         callback(err,activitie);
     });
 };
+
+//返回值为[n:x,ok:y] x代表删除的数量 ok代表。。。还不清楚
+exports.remove=function(bus_id,callback){
+    Activitie.remove(bus_id,function(err,activitie){
+        callback(err,activitie);
+    });
+};
