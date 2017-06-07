@@ -52,7 +52,16 @@ apiRoutes.get('/add_one_activitie',function(req,res){
       }
   });
 });
-
+apiRoutes.get('/sub_one_activitie',function(req,res){
+  Activitie.SubOne({bus_id:1},function(err,result){
+      if(!err){
+          res.send(JSON.stringify(result));
+      }
+      else{
+          res.send(err);
+      }
+  });
+});
 
 
 
