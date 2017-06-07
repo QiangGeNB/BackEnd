@@ -7,6 +7,7 @@ apiRoutes.get('/add_activitie',function(req,res){
   Activitie.create({
         "bus_id": 1,
         "bus_avatar": "活动头像url",
+        "bus_number": 10,
         "bus_introduce": { //活动的介绍
         "bus_name": "鼎福射箭馆",
         "bus_location": "平乐园十字路口",
@@ -21,6 +22,19 @@ apiRoutes.get('/add_activitie',function(req,res){
       }
   });
 });
+apiRoutes.get('/find_activitie',function(req,res){
+  Activitie.find(function(err,result){
+      if(!err){
+          res.send(JSON.stringify(result));
+      }
+      else{
+          res.send(err);
+      }
+  });
+});
+
+
+
 
 
 apiRoutes.get('/find',function(req,res){
