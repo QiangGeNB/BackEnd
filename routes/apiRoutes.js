@@ -9,7 +9,10 @@ apiRoutes.get('/add_activitie',function(req,res){
       "act_id": 100,
       "act_name": "我们一起射箭", //用户自己设置，有默认值
       "act_avatar": "活动头像",
-      "act_date": "2017/6/19", //活动时间
+      "act_date": {
+        "_data": "3月1日",
+        "time": "下午5:00"
+      }, //活动时间
       "member": {
         "max": 10,
         "min": 5,

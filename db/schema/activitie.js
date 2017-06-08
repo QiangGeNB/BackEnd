@@ -5,7 +5,10 @@ var ActivitieSchema = new mongoose.Schema({
     act_id:Number,
     act_name:String, //用户自己设置，有默认值
     act_avatar:String,
-    act_date:Date, //活动时间
+    act_date:{
+    	_data:String,
+    	time:String
+    }, //活动时间
     member:{
         max:Number,
         min:Number,
