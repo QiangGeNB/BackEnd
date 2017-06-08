@@ -7,7 +7,10 @@ exports.create=function(data,callback){
         act_id:data.act_id,
         act_name:data.act_name, //用户自己设置，有默认值
         act_avatar:data.act_avatar,
-        act_date:data.act_date, //活动时间
+        act_date:{
+            _data:data.act_date._data,
+            time:data.act_date.time
+        }, //活动时间
         member:{
             max:data.member.max,
             min:data.member.min,
